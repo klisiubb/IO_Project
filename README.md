@@ -2,11 +2,11 @@
 
 ## PLX - Portal z ogłoszeniami lokalnymi
 
-**Wersja:** *0.1.0*
-**Autorzy:** 
-*Mateusz Kliś* [Github](https://github.com/klisiubb)
-*Bartosz Dobija* [Github](https://github.com/BartShoot)
-*Tomasz Korzeniowski* [Github](https://github.com/Hagenus)
+**Wersja:** *0.1.0*\
+**Autorzy:**\
+*Mateusz Kliś* [Github](https://github.com/klisiubb)\
+*Bartosz Dobija* [Github](https://github.com/BartShoot)\
+*Tomasz Korzeniowski* [Github](https://github.com/Hagenus)\
 *Krzysztof Szczypka* [Github](https://github.com/krzysiek-7)
 
 
