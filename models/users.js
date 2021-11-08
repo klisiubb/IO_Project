@@ -1,11 +1,15 @@
-const mongoose = require("../functions/databaseConnector");
- 
-var userSchema = new mongoose.Schema({
-            login: String,
-            password: String,
-            email:String,
-        });
- 
-var userModel=mongoose.model('users',userSchema);
- 
-module.exports = mongoose.model("Users", userModel);
+//const mongoose = require("../functions/databaseConnector");
+var passportLocalMongoose = require("passport-local-mongoose");
+const mongoose = require('mongoose');
+mongoose.connect("mongodb://127.0.0.1:27017/users", { useNewUrlParser: true });   
+const { Schema } = mongoose;
+
+const userSchema = new Schema({
+  username:  String, 
+  password: String,
+  email:   String,
+});
+userSchema.plugin(passportLocalMongoose);
+let User = mongoose.model("User", userSchema);
+User.createCollection();
+module.exports = User;

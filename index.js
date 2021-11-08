@@ -9,19 +9,23 @@ var passport = require("passport");
 var bodyParser = require("body-parser");
 var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
-var User = require("./models/userModel");
+var User = require("./models/users");
+
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(require("express-session")({
 secret: "plx2021",
 resave: false,
 saveUninitialized: false
 }));
 
+//passport
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
 //Main page
 app.get('/', (req, res) => {
   res.render('index')
@@ -34,16 +38,17 @@ app.get("/logged", isLoggedIn, function (req, res) {
 app.get("/register", function (req, res) {
   res.render('register', {
   title: 'Rejestracja - PLX',
-  login: '',
+  username: '',
   email: '',
   password: ''    
   })
   });
 // register form post
   app.post("/register", function (req, res) {
+    var username = req.body.username
     var email = req.body.email
     var password = req.body.password
-    User.register(new User({ email: email }),
+    User.register(new User({ email: email, username:username }),
     password, function (err, user) {
     if (err) {
     console.log(err);
@@ -51,7 +56,7 @@ app.get("/register", function (req, res) {
     }
     passport.authenticate("local")(
     req, res, function () {
-    req.flash('success', 'Zarejestrowano!')
+    //req.flash('success', 'Zarejestrowano!')
     res.render("logged");
     });
     });
@@ -60,6 +65,7 @@ app.get("/register", function (req, res) {
   app.get("/login", function (req, res) {
       res.render('login', {
       title: 'Logowanie - PLX',
+      username: '',
       email: '',
       password: ''     
       })
@@ -80,6 +86,9 @@ function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
     res.redirect("/login");
 }
+//test code
+
+// end of test code
 app.listen(port, () => {
   console.log(`Portal PLX działa na porcie: ${port}`)
 })

@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://134.209.241.15/users', {useNewUrlParser: true});
-var conn = mongoose.connection;
+mongoose.connect('mongodb://on;localhost/users', {useNewUrlParser: true});
+var conn = mongoose.connecti
 conn.on('connected', function() {
     console.log('database is connected successfully');
 });
