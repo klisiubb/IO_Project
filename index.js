@@ -4,7 +4,12 @@ const port = 3000
 require('dotenv').config()
 app.set('view engine', 'hbs');
 app.use(express.static('public'))
-
+var mongoose = require("mongoose");
+var passport = require("passport");
+var bodyParser = require("body-parser");
+var LocalStrategy = require("passport-local");
+var passportLocalMongoose = require("passport-local-mongoose");
+var User = require("./models/userModel");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(require("express-session")({
 secret: "plx2021",
