@@ -82,12 +82,12 @@ app.get("/logout", function (req, res) {
     res.redirect("/");
     });
 // Ads
-app.get("/add", function (req, res) {
+app.get("/add",isLoggedIn, function (req, res) {
   res.render("add");
   });
 
 // Success of adding an ad
-app.get("/success", function (req, res) {
+app.get("/success",isLoggedIn, function (req, res) {
 res.render("success");
 });
 function isLoggedIn(req, res, next) {
