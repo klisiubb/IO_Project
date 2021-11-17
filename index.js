@@ -94,6 +94,14 @@ function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
     res.redirect("/login");
 }
+// adding an ad post req
+app.post('add', (req, res) => {
+  var title = req.body.tytulOgloszenia
+  var category_id =  req.body.kategoria
+  var description  =  req.body.opisOgloszenia
+  var phone  =  req.body.numerTelefonu
+  //todo 
+})
 //test code
 
 // end of test code
