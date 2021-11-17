@@ -81,7 +81,15 @@ app.get("/logout", function (req, res) {
   req.logout();
     res.redirect("/");
     });
+// Ads
+app.get("/add", function (req, res) {
+  res.render("add");
+  });
 
+// Success of adding an ad
+app.get("/success", function (req, res) {
+res.render("success");
+});
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
     res.redirect("/login");
