@@ -1,18 +1,47 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://127.0.0.1:27017/users", { useNewUrlParser: true });   
+//mongoose.connect("mongodb://127.0.0.1:27017/users", { useNewUrlParser: true });   
 const { Schema } = mongoose;
 
 const adSchema = new Schema({
-    owner_id: int,
-    title:  String,
-    category_id: int, 
-    description: String,
-    photo_1: String,
-    photo_2: String,
-    photo_3: String,
-    photo_4: String,
-    photo_5: String,
-    phone:   int,
+    owner_id:{ 
+     type: int,
+     required : true
+    },
+    title:{  
+    type: String,
+    required : true
+    },
+    category_id:{
+    type: int,
+    required : true
+    }, 
+    description: {
+    type: String,
+    required : true
+    },
+    photo_1:{ 
+    type: String,
+    required : true
+    },
+    photo_2:{
+    type: String
+    },
+    photo_3:{
+    type: String
+    },
+    photo_4:{
+    type: String
+    },
+    photo_5:{
+    type: String
+    },
+    phone:   {
+    type:int,
+    required: true},
+    date:{
+    type: Date,
+    default: Date.now,
+    required: true}
 });
 let ad = mongoose.model("Ad", adSchema);
 ad.createCollection();
