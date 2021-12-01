@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <%- include('./partials/head'); %>
+</head>
+<body>
+    <section>
+    <header class="p-3 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                </a>
+                <a class="navbar-brand text-white" href="/">
+                    <img src="pl.svg" alt="PL" height="32" width="32">
+                    PLX</a>
+                <ul class="nav  col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        
+                </ul>
+                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-white text-decoration-none dropdown-toggle text-white show"
+                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="true">
+                        <img src="<%= user.profilepic %>" alt="PLX" width="32" height="32" class="rounded-circle">
+                        <%= user.login %>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small show" aria-labelledby="dropdownUser1"
+                        data-popper-placement="bottom-end"
+                        style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(-110px, 34px, 0px);">
+                        <li><a class="dropdown-item" href="/settings">Ustawienia</a></li>
+                        <li><a class="dropdown-item" href="/profile">Mój profil</a></li>
+                        <li><a class="dropdown-item" href="/mine">Moje ogłoszenia</a></li>
+                        <li><a class="dropdown-item" href="/faq">FAQ</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/users/logout">Wyloguj się</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </header>
+    </section>
+    
+    <div class="wrapper bg-white rounded shadow">
+        <div class="h2 text-center fw-bold">PLX</div>
+        <div class="h3 text-primary text-center">Jak możemy ci pomóc?</div>
+        <div class="d-flex justify-content-center">
+            <div class="search w-75 d-flex align-items-center"> <span class="fas fa-search text-dark"></span> <input type="text" class="form-control" placeholder="Jaki masz problem"> </div>
+        </div>
+        <div class="accordion accordion-flush border-top border-start border-end" id="myAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne"> <button class="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"> Najczęsciej zadawane </button> </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse border-0" aria-labelledby="flush-headingOne" data-bs-parent="#myAccordion">
+                    <div class="accordion-body p-0">
+                        <ul class="list-unstyled m-0">
+                            <li><a href="#">hhhhh</a></li>
+                            <li><a href="#">aaaa</a></li>
+                            <li><a href="#">sss</a></li>
+                            <li><a href="#">dddd</a></li>
+                            <li><a href="#">bbbb</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne"> <button class="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">1 </button> </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse border-0" aria-labelledby="flush-headingOne" data-bs-parent="#myAccordion">
+                    <div class="accordion-body p-0">
+                        <ul class="list-unstyled m-0">
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne"> <button class="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree"> 2 </button> </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse border-0" aria-labelledby="flush-headingOne" data-bs-parent="#myAccordion">
+                    <div class="accordion-body p-0">
+                        <ul class="list-unstyled m-0">
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne"> <button class="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">3 </button> </h2>
+                <div id="flush-collapseFour" class="accordion-collapse collapse border-0" aria-labelledby="flush-headingOne" data-bs-parent="#myAccordion">
+                    <div class="accordion-body p-0">
+                        <ul class="list-unstyled m-0">
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne"> <button class="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive"> 4 </button> </h2>
+                <div id="flush-collapseFive" class="accordion-collapse collapse border-0" aria-labelledby="flush-headingOne" data-bs-parent="#myAccordion">
+                    <div class="accordion-body p-0">
+                        <ul class="list-unstyled m-0">
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne"> <button class="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix"> 5 </button> </h2>
+                <div id="flush-collapseSix" class="accordion-collapse collapse border-0" aria-labelledby="flush-headingOne" data-bs-parent="#myAccordion">
+                    <div class="accordion-body p-0">
+                        <ul class="list-unstyled m-0">
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"></script>
+</body>
+
+</html>
