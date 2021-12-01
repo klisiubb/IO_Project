@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const adSchema = new Schema({
     owner_id:{ 
-     type: int,
+     type: Number,
      required : true
     },
     title:{  
@@ -12,7 +12,7 @@ const adSchema = new Schema({
     required : true
     },
     category_id:{
-    type: int,
+    type: Number,
     required : true
     }, 
     description: {
@@ -36,7 +36,7 @@ const adSchema = new Schema({
     type: String
     },
     phone:   {
-    type:int,
+    type:Number,
     required: true},
     date:{
     type: Date,

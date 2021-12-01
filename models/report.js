@@ -3,11 +3,11 @@ const { Schema } = mongoose;
 
 const reportSchema = new Schema({
     report_id:{ 
-     type: int,
+     type: Number,
      required : true
     },
     reporter_id:{ // id of user 
-        type: int,
+        type: Number,
         required : true
        },
     title:{  
@@ -15,7 +15,7 @@ const reportSchema = new Schema({
     required : true
     },
     ad_id:{ //reported AD ID to verify
-    type: int,
+    type: Number,
     required : true
     }, 
     description: { // description of report
