@@ -1,94 +1,45 @@
-const express = require('express')
-const app = express()
-const port = 3000
-require('dotenv').config()
-app.set('view engine', 'hbs');
+const express = require('express');
+const mongoose = require('mongoose');
+const router = express.Router();
+const app = express();
+const expressEjsLayout = require('express-ejs-layouts')
+const flash = require('connect-flash');
+const session = require('express-session');
+const passport = require("passport");
+const path = require('path')
 app.use(express.static('public'))
-var mongoose = require("mongoose");
-var passport = require("passport");
-var bodyParser = require("body-parser");
-var LocalStrategy = require("passport-local");
-var passportLocalMongoose = require("passport-local-mongoose");
-var User = require("./models/users");
+//passport config:
+require('./config/passport')(passport)
+//mongoose
+mongoose.connect('mongodb://localhost/test',{useNewUrlParser: true, useUnifiedTopology : true})
+.then(() => console.log('connected,,'))
+.catch((err)=> console.log(err));
 
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(require("express-session")({
-secret: "plx2021",
-resave: false,
-saveUninitialized: false
+//EJS
+app.set('view engine','ejs');
+//BodyParser
+app.use(express.urlencoded({extended : false}));
+//express session
+app.use(session({
+    secret : 'secret',
+    resave : true,
+    saveUninitialized : true
 }));
-
-//passport
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+app.use(flash());
+app.use((req,res,next)=> {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error  = req.flash('error');
+    next();
+    })
+    
+//Routes
+app.use('/',require('./routes/index'));
+app.use('/users',require('./routes/users'));
+app.use(function (req,res,next){
+	res.status(404).render('404');
+});
 
-//Main page
-app.get('/', (req, res) => {
-  res.render('index')
-})
-// After login page only for testing
-app.get("/logged", isLoggedIn, function (req, res) {
-  res.render("logged");
-  });
-// Register page
-app.get("/register", function (req, res) {
-  res.render('register', {
-  title: 'Rejestracja - PLX',
-  username: '',
-  email: '',
-  password: ''    
-  })
-  });
-// register form post
-  app.post("/register", function (req, res) {
-    var username = req.body.username
-    var email = req.body.email
-    var password = req.body.password
-    User.register(new User({ email: email, username:username }),
-    password, function (err, user) {
-    if (err) {
-    console.log(err);
-    return res.render("register");
-    }
-    passport.authenticate("local")(
-    req, res, function () {
-    //req.flash('success', 'Zarejestrowano!')
-    res.render("logged");
-    });
-    });
-    });
-    // login page
-  app.get("/login", function (req, res) {
-      res.render('login', {
-      title: 'Logowanie - PLX',
-      username: '',
-      email: '',
-      password: ''     
-      })
-      });
-// login post
-app.post("/login", passport.authenticate("local", {
-  successRedirect: "/logged",
-  failureRedirect: "/login"
-  }), function (req, res) {
-  });
-//logout
-app.get("/logout", function (req, res) {
-  req.logout();
-    res.redirect("/");
-    });
-
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) return next();
-    res.redirect("/login");
-}
-//test code
-
-// end of test code
-app.listen(port, () => {
-  console.log(`Portal PLX działa na porcie: ${port}`)
-})
+app.listen(3000);
