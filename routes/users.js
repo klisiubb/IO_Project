@@ -128,3 +128,13 @@ router.post('/deleteuser', (req,res)=>{
       console.log("Deleted user");
       res.redirect('/dashboard');
 })
+
+//<!--- edit profile ---!>
+router.get('/edituser', (req,res)=>{
+    res.render('edituser');
+})
+
+//<!--- edit profile POST ---!>
+router.post('edituser', (req,res)=>{
+    //TODO
+})
