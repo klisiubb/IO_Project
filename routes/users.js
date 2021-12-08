@@ -111,3 +111,20 @@ router.post('/verifyemail', (req,res)=>{
 })
 
 module.exports  = router;
+
+//<!--- delete user GET ---!>
+router.get('/deleteuser', (req,res)=>{
+    console.log("Deleted user");
+    res.render('delete',{
+        user: req.user
+    });
+})
+//<!--- delete user POST ---!>
+router.post('/deleteuser', (req,res)=>{
+    userID = req.user.login;
+    User.deleteOne({ _id: userID }, function (err) {
+        if (err) return handleError(err);
+      });
+      console.log("Deleted user");
+      res.redirect('/dashboard');
+})
