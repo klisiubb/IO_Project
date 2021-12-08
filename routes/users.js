@@ -138,3 +138,11 @@ router.get('/edituser', (req,res)=>{
 router.post('edituser', (req,res)=>{
     //TODO
 })
+
+//<!--- View other user account -->
+router.use('/user/:id')
+router.get('/user/:id', (req,res)=>{
+    req.params.id;
+    //find user by id todo
+    res.render('viewuser');
+})
