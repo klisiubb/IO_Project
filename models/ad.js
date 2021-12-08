@@ -19,29 +19,25 @@ const adSchema = new Schema({
     type: String,
     required : true
     },
-    photo_1:{ 
-    type: String,
-    required : true
-    },
-    photo_2:{
-    type: String
-    },
-    photo_3:{
-    type: String
-    },
-    photo_4:{
-    type: String
-    },
-    photo_5:{
-    type: String
-    },
+  Photo:{
+    type:[String],
+    required: true
+  },
     phone:   {
     type:Number,
     required: true},
     date:{
     type: Date,
     default: Date.now,
-    required: true}
+    required: true},
+    is_premium:{
+        type: Boolean, // to check if user paid for more views, main page etc.
+        default: false
+    },
+    views:{
+        type:Number,
+        default:0
+    }
 });
 let ad = mongoose.model("Ad", adSchema);
 ad.createCollection();
