@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require("../models/user");
+const User = require("../models/user_schema");
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 
@@ -111,3 +111,38 @@ router.post('/verifyemail', (req,res)=>{
 })
 
 module.exports  = router;
+
+//<!--- delete user GET ---!>
+router.get('/deleteuser', (req,res)=>{
+    console.log("Deleted user");
+    res.render('delete',{
+        user: req.user
+    });
+})
+//<!--- delete user POST ---!>
+router.post('/deleteuser', (req,res)=>{
+    userID = req.user.login;
+    User.deleteOne({ _id: userID }, function (err) {
+        if (err) return handleError(err);
+      });
+      console.log("Deleted user");
+      res.redirect('/dashboard');
+})
+
+//<!--- edit profile ---!>
+router.get('/edituser', (req,res)=>{
+    res.render('edituser');
+})
+
+//<!--- edit profile POST ---!>
+router.post('edituser', (req,res)=>{
+    //TODO
+})
+
+//<!--- View other user account -->
+router.use('/user/:id')
+router.get('/user/:id', (req,res)=>{
+    req.params.id;
+    //find user by id todo
+    res.render('viewuser');
+})
