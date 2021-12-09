@@ -1,20 +1,16 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const reportSchema = new Schema({
-    report_id:{ 
+const userReportSchema = new Schema({
+    report_id:{  // id of report
      type: Number,
      required : true
     },
-    reporter_id:{ // id of user 
+    reporter_id:{ // id of user which report
         type: Number,
         required : true
        },
-    title:{  
-    type: String,
-    required : true
-    },
-    ad_id:{ //reported AD ID to verify
+    user_id:{ // id of reported user
     type: Number,
     required : true
     }, 
@@ -27,6 +23,6 @@ const reportSchema = new Schema({
     default: Date.now,
     required: true}
 });
-let report = mongoose.model("Report", reportSchema);
-report.createCollection();
-module.exports = report;
+let report = mongoose.model("userReport", userReportSchema);
+userReport.createCollection();
+module.exports = userReport;
