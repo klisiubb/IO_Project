@@ -75,7 +75,7 @@ router.get('/register',(req,res)=>{
                         req.flash('success_msg','Zarejestrowano!');
                         res.redirect('/users/login');
                     })
-                    .catch(value=> console.log(value));
+                    //.catch(value=> console.log(value));
                       
                 }));
              }
@@ -109,9 +109,6 @@ router.get('/verifyemail', (req,res)=>{
 router.post('/verifyemail', (req,res)=>{
     //TODO
 })
-
-module.exports  = router;
-
 //<!--- delete user GET ---!>
 router.get('/deleteuser', (req,res)=>{
     console.log("Deleted user");
@@ -128,7 +125,6 @@ router.post('/deleteuser', (req,res)=>{
       console.log("Deleted user");
       res.redirect('/dashboard');
 })
-
 //<!--- edit profile ---!>
 router.get('/edituser', (req,res)=>{
     res.render('edituser');
@@ -140,9 +136,10 @@ router.post('edituser', (req,res)=>{
 })
 
 //<!--- View other user account -->
-router.use('/user/:id')
-router.get('/user/:id', (req,res)=>{
-    req.params.id;
+//router.use('/user/:id')
+//router.get('/user/:id', (req,res)=>{
+    //req.params.id;
     //find user by id todo
-    res.render('viewuser');
-})
+    //res.render('viewuser');
+//})
+module.exports = router;    
