@@ -25,7 +25,11 @@ const messageSchema = new Schema({
     message_dates:{
     type: [Date], // date n time of msg
     default: Date.now,
-    required: true}
+    required: true},
+    is_sold:{//disable messages if user sold the item
+        type: Boolean,
+        default: false
+    }
 });
 let report = mongoose.model("Messages", messageSchema);
 message.createCollection();

@@ -15,14 +15,18 @@ const supportSchema = new Schema({
         type: [String],
         required : true
         },
-    support_messages: { //responce of support
+    support_messages: { //response of support
         type: [String],
         required : true
         },
     message_dates:{
     type: [Date],
     default: Date.now,
-    required: true}
+    required: true},
+    is_solved:{ //disable new messages if problem is solved
+        type:Boolean,
+        default: false
+    }
 });
 let report = mongoose.model("Support", supportSchema);
 support.createCollection();
