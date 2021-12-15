@@ -63,7 +63,31 @@ function sendEmailToVerify(userEmail,verifyLink) {
         from: process.env.EMAIL_USER,
         to: userEmail,
         subject: 'PLX  - weryfikacja adresu email',
-        text: 'Dziękujemy za rejestrację' // todo fancy text here
+        text: 'Zweryfikuj swój email' +verifyLink // todo fancy text here
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      }); 
+}
+function sendEmailNewsletter([userEmail],newsletterText) {
+    var transporter = nodemailer.createTransport({
+        service: process.env.EMAIL_SERVICE,
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_USER
+        }
+      });
+      
+      var mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: [userEmail],
+        subject: 'PLX  - newsletter'+ new Date().toLocaleDateString() ,
+        text: newsletterText // todo fancy text here
       };
       
       transporter.sendMail(mailOptions, function(error, info){
