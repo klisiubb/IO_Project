@@ -1,8 +1,42 @@
 const express = require('express');
 const router = express.Router();
 const User = require("../models/user_schema");
+const ad = require("../models/ad_schema");
 const bcrypt = require('bcrypt');
 const passport = require('passport');
+const dateFormater = require('../functions/dateFormaterProfile')
+
+router.route("/profile/:id").get((req, res) => {
+    const id = req.params.id;
+    
+    //const userid = req.user._id;
+    //console.log(id);
+    //viewsTrick =ad.views+1;
+    //ad.updateOne({_id: id},{$inc:{views: viewsTrick}})
+    //ad.findById(id, err => {
+        
+            User.findById(id, function(err, result) {
+              if (err) {
+                res.send(err);
+              } else {
+                  ad.find({userid: id}, function(err,ads){
+                      if(err){
+                        console.log(result);
+                          res.send(err);
+                      }else {
+                        res.render("profile",{ads:ads,profile: result,user:req.user });
+                      }
+                  })
+                //res.json(result);
+                //console.log(result);
+              }
+            });
+    //ad.findById(id).exec().then();
+     //console.log(test);
+    //if (err) return res.send(500, err);
+    //
+    //});
+    });
 
 //<!--- Login user ---!>
 router.get('/login',(req,res)=>{
@@ -25,6 +59,8 @@ router.get('/register',(req,res)=>{
 
 //<!--- Register user POST ---!>
   router.post('/register',(req,res)=>{
+    date = new Date();
+    insertDate = dateFormater(date);
     const {login,email, password, password2} = req.body;
     let errors = [];
     // console.log(' login ' + login+ ' email :' + email+ ' pass:' + password);
@@ -58,7 +94,8 @@ router.get('/register',(req,res)=>{
             const newUser = new User({
                 login : login,
                 email : email,
-                password : password
+                password : password,
+                registerTime: insertDate
             });
     
             //hash password
