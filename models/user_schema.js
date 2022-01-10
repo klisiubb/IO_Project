@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const nodemon = require('nodemon');
 const UserSchema  = new mongoose.Schema({
   login :{
       type  : String,
@@ -8,18 +9,28 @@ const UserSchema  = new mongoose.Schema({
     type  : String,
     required : true
 } ,
+registerTime:{
+type:String,
+required: true
+},
+location:{
+type:String,
+required:false,
+default: "Lokalizacja ukryta"
+},
+phone:{
+    type:String,
+    required: false,
+    default:"Telefon ukryty"
+},
 password :{
     type  : String,
     required : true
 } ,
-date :{
-    type : Date,
-    default : Date.now
-},
-profilepic :{
+avatar :{
     type  : String,
     required : false,
-    default: "https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/64/000000/external-user-interface-kiranshastry-gradient-kiranshastry.png",
+    default: "default.svg",
 } ,
 moderator:{
   type: Boolean, // to check if user is an moderator, to access moderate functions

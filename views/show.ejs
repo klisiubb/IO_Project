@@ -1,0 +1,185 @@
+
+    <head>
+        <%- include('./partials/head'); %>
+    </head>
+
+    <body>
+
+        <section>
+            <% if(typeof user=='undefined' ) { %>
+                <%- include('./partials/navbar_not_logged'); %>
+                    <% } else{ %>
+                        <%- include('./partials/navbar_logged'); %>
+                            <% } %>
+        </section>
+        <section>
+    
+            <%- include('./partials/search'); %>
+    
+        </section>
+        <hr>
+<div class="confainer-fluid justify-content-center align-items-center">
+  
+
+ <h2 class="text-center"><%= ad.title %></h2>
+
+    <div class="row">
+    <div class="col text-center mt-5">
+
+      <% if(user.moderator === true){ %>
+        <h3 class="text-center mb-3">Panel Administratora:</h3>
+        <a class="btn btn-danger mb-3" href="/delete/<%= ad._id %>">USUŃ OGŁOSZENIE</a>
+        
+        <form action="/add/promote" method="POST">
+          <input type="hidden" value="<%=user._id %>" name="id"id="id" readonly>
+          <button type="submit" class="btn btn-primary">PROMUJ OGŁOSZENIE</button>
+        </form>
+    <% } else{ %>
+      
+    <% } %>
+
+    </div>
+    <div class="col-6">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators"><!-- Tu foreach dla -->
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <!-- Tu foreach dla zdjec, zrobic tabele linkow -->
+        <div class="carousel-inner">
+          <div class="carousel-item active text-center">
+            <img src="/uploads/<%= ad.img %>" class="d-block w-100" alt="...">
+          </div>
+        </div> <!-- Do tego diva -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+      <div class="col text-center mt-5">
+        <h3 class="text-center mb-3">O sprzedającym:</h3>
+        <div class="text-center">
+          <a href="/users/profile/<%= user._id %>" class="text-decoration-none">
+            <img src="/uploads/avatars/<%= user.avatar%>"alt="Avatar"height="96" width="96" class="rounded-circle border border-primary"><!-- Tu bedzie avatar /uploads/<%= user.avatar %> class="img-thumbnail" -->
+          </div>
+          <p class="text-dark fw-bold mt-2"><%= user.login %></p>
+        </a>
+         <p class="text-dark"><i class="fas fa-home"></i> <%= ad.location %></p>
+          <p class="text-dark"><i class="fas fa-phone"></i> <%= ad.phone %></p>
+          
+
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+            Wyślij wiadomość
+          </button>
+          <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#myModal2">
+            Zgłoś
+          </button>
+          
+
+       
+
+
+<!-- Modal do wiadomosci-->
+
+<!-- Button to Open the Modal -->
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <p class="modal-title">Wiadomość do <%= ad.title %></p>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form action="/add/sendmsg" method="POST">
+          <div class="form-group text-start">
+            <label for="message" class="col-form-label">Treść wiadomości:</label>
+            <textarea class="form-control mt-2" id="message"name="message"></textarea>
+          <input type="hidden" value="<%=ad._id %>" name="idogloszenia"id="idogloszenia" readonly>
+          <input type="hidden" value="<%=user._id %>" name="idusera"id="idusera" readonly>
+          </div>
+      
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Anuluj</button>
+        <button type="submit" class="btn btn-outline-primary" data-bs-dismiss="modal">Wyślij</button>
+      </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal do zgloszen-->
+
+<!-- Button to Open the Modal -->
+<!-- The Modal -->
+<div class="modal" id="myModal2">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <p class="modal-title">Zgłoś <%= ad.title %></p>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form action="/add/report_add" method="POST">
+          <div class="form-group text-start">
+            <label for="message" class="col-form-label">Treść zgłoszenia:</label>
+            <textarea class="form-control mt-2" id="message"name="message"></textarea>
+          <input type="hidden" value="<%=ad._id %>" name="idogloszenia"id="idogloszenia" readonly>
+          <input type="hidden" value="<%=user._id %>" name="idusera"id="idusera" readonly>
+          </div>
+      
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Anuluj</button>
+        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Zgłoś</button>
+      </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+      </div>
+    </div>
+
+<div class="row mt-4">
+    <div class="col"></div>
+    <div class="col-6 text-start">
+     <p>Ilość wyświetleń: <%=ad.views %></p> 
+      <hr>
+    <h3 class="my-3">Opis ogłoszenia:</h3>  
+    
+      <%= ad.description %>
+    </div>
+    <div class="col"></div>
+</div>
+    </div>
+      <section>
+
+        <%- include('./partials/footer'); %>
+
+    </section>
+  
+</body>
