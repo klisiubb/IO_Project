@@ -2,24 +2,21 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const reportSchema = new Schema({
-    report_id:{  // id of report
-     type: Number,
-     required : true
-    },
     reporter_id:{ // id of user which report
-        type: Number,
+        type: String,
         required : true
        },
     ad_id:{ //reported AD ID to verify
-    type: Number,
-    required : true
+    type: String,
+    required : false,
+    default: "Zgłoszenie użytkownika"
     }, 
     description: { // description of report
     type: String,
     required : true
     },
     date:{
-    type: Date,
+    type: String,
     default: Date.now,
     required: true}
 });

@@ -1,0 +1,54 @@
+
+    <head>
+        <%- include('./partials/head'); %>
+    </head>
+
+    <body>
+        <section>
+            <% if(typeof user=='undefined' ) { %>
+                <%- include('./partials/navbar_not_logged'); %>
+                    <% } else{ %>
+                        <%- include('./partials/navbar_logged'); %>
+                            <% } %>
+        </section>
+        <section>
+    
+            <%- include('./partials/search'); %>
+    
+        </section>
+<div class="confainer-md d-flex justify-content-center align-items-center text-center">
+  <div class="row">
+  <% useradd.forEach(add => { %>
+    <div class="col-md-4"></div>
+    <div class="col-md-4 py-5">
+        <div class="card h-100">
+          <img src="/uploads/<%= add.img %>" class="card-img-top img-thumbnail" alt="Brak zdjęcia :(">         
+          <div class="card-body"> 
+            <hr></hr>
+            <p class="card-text"><h4> <%= add.title %> <a href="#" class="btn btn-secondary">Zobacz więcej</a>  </p></h4>
+            <hr></hr>
+            <h6><%= add.location %></h6>
+            <h5 class="ms-auto"><%= add.price %> zł.</h5>               
+            <p><%= add.description %></p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">
+               <p>Dodano: <%= add.date %>  </p>
+              <p> Wyświetlenia: <%= add.views %></p>
+              </small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+      <% }) %>
+    </div>
+    </div>
+      <section>
+
+        <%- include('./partials/footer'); %>
+
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
