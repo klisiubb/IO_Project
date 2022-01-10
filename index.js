@@ -7,12 +7,16 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require("passport");
 const path = require('path')
-app.use(express.static('public'))
+const cookieParser = require('cookie-parser')
+app.use(cookieParser('abcdefg'));
+app.use('/public', express.static(path.join(__dirname, 'public')))
+app.use('/uploads', express.static('uploads'));
 //passport config:
+const {ensureAuthenticated} = require('./config/auth') 
 require('./config/passport')(passport)
 //mongoose
 mongoose.connect('mongodb://localhost/test',{useNewUrlParser: true, useUnifiedTopology : true})
-.then(() => console.log('connected,,'))
+.then(() => console.log('connected to DB'))
 .catch((err)=> console.log(err));
 
 //EJS
@@ -37,9 +41,10 @@ app.use((req,res,next)=> {
     
 //Routes
 app.use('/',require('./routes/index'));
+app.use('/add',ensureAuthenticated,require('./routes/ads'));
 app.use('/users',require('./routes/users'));
 app.use(function (req,res,next){
-	res.status(404).render('404');
+    res.status(404).render('404');
 });
 
 app.listen(3000);
