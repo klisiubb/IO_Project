@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <%- include('./partials/head'); %>
+</head>
+<body>
+    <section>
+        <% if(typeof user=='undefined' ) { %>
+            <%- include('./partials/navbar_not_logged'); %>
+                <% } else{ %>
+                    <%- include('./partials/navbar_logged'); %>
+                        <% } %>
+    </section>
+    <section>
+
+        <%- include('./partials/search'); %>
+
+    </section>
+
+<div class="col text-center mt-5">
+    <h3 class="text-center mb-3">O sprzedającym:</h3>
+    <div class="text-center">
+        <img src="/uploads/avatars/<%= profile.avatar%>"alt="Avatar"height="96" width="96" class="rounded-circle border border-primary"><!-- Tu bedzie avatar class="img-thumbnail" -->
+      </div>
+      <p class="text-dark fw-bold mt-2"><%= profile.login %></p>
+        <p>Użytkownik od <%=profile.registerTime %></p>
+     <p class="text-dark"><i class="fas fa-home"></i> <%=profile.location %></p>
+      <p class="text-dark"><i class="fas fa-phone"></i> <%=profile.phone %></p>
+
+      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#myModal2">
+        Zgłoś użytkownika
+      </button>
+
+      <section>
+
+
+        <div class="row">
+
+
+      
+
+
+
+            <h3 class="mt-3">Zobacz ogłoszenia dodane przez użytkownika:</h3>
+
+            <% if (ads.length === 0) {%>
+              <p class="mt-3 fs-5">Wygląda na to, że użytkownik nie dodał żadnego ogłoszenia.</p>
+              <% } %>
+
+
+            <% ads.forEach(add => { %>
+              <div class="col-md-4"></div>
+              <div class="col-md-4 py-5">
+          
+          
+                  <div class="card h-100">
+                      <img src="/uploads/<%= add.img %>" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title"><a href="/add/show/<%= add._id %>" class="text-decoration-none text-dark text-uppercase"><%= add.title %></a></h5>
+                        <hr>
+                        <p class="fs-6"><%= add.location %> - <%= add.date %></p>
+                        <p class="fs-5 fst-bolder"><%= add.price %> zł</p>
+                        <p class="fs-6"> Ilość wyświetleń: <%= add.views %></p>
+                      </div>
+                    </div>
+          
+                </div>
+                <div class="col-md-4"></div>
+                <% }) %>
+              </div>
+
+
+              <div class="modal" id="myModal2">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+              
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <p class="modal-title">Zgłoś <%= profile.login %></p>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+              
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                      <form action="/add/report_user" method="POST">
+                        <div class="form-group text-start">
+                          <label for="message" class="col-form-label">Treść zgłoszenia:</label>
+                          <textarea class="form-control mt-2" id="message"name="message"></textarea>
+                        <input type="hidden" value="<%=user._id %>" name="idusera"id="idusera" readonly>
+                        </div>
+                    
+                    </div>
+              
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Anuluj</button>
+                      <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Zgłoś</button>
+                    </form>
+                    </div>
+              
+                  </div>
+                </div>
+              </div>
+
+      </section>
+
+    <section>
+
+        <%- include('./partials/footer'); %>
+
+    </section>
+</body>
+  </div>
