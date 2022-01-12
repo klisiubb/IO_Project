@@ -1,85 +1,75 @@
-<!DOCTYPE html>
-<html lang="pl">
+<!DOCTYPE html><html lang="pl">
 
 <head>
-    <%- include('./partials/head'); %>
+  <%- include('./partials/head'); %>
 </head>
 <body>
-    <section>
-        <header class="p-3 bg-dark text-white">
-            <div class="container">
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                            <use xlink:href="#bootstrap"></use>
-                        </svg>
-                    </a>
-                    <a class="navbar-brand text-white" href="/">
-                        <img src="pl.svg" alt="PL" height="32" width="32">
-                        PLX</a>
-                    <ul class="nav  col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            
-                    </ul>
-                    <div class="dropdown text-end">
-                        <a href="#" class="d-block link-white text-decoration-none dropdown-toggle text-white show"
-                            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="true">
-                            <img src="<%= user.profilepic %>" alt="PLX" width="32" height="32" class="rounded-circle">
-                            <%= user.login %>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark text-small show" aria-labelledby="dropdownUser1"
-                            data-popper-placement="bottom-end"
-                            style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(-110px, 34px, 0px);">
-                            <li><a class="dropdown-item" href="/settings">Ustawienia</a></li>
-                            <li><a class="dropdown-item" href="/profile">Mój profil</a></li>
-                            <li><a class="dropdown-item" href="/mine">Moje ogłoszenia</a></li>
-                            <li><a class="dropdown-item" href="/faq">FAQ</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="/users/logout">Wyloguj się</a></li>
-                        </ul>
-                    </div>
-                </div>
+  <section>
+    <% if(typeof user=='undefined' ) { %>
+        <%- include('./partials/navbar_not_logged'); %>
+            <% } else{ %>
+                <%- include('./partials/navbar_logged'); %>
+                    <% } %>
+</section>
+<section class="container-fluid d-flex justify-content-center align-items-center bg-secondary py-4">
+
+  <form action="/add/new" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Tytuł ogłoszenia:</label>
+      <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Opis ogłoszenia:</label>
+      <input type="textarea" name="description" class="form-control" id="description"required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Telefon:</label>
+      <input type="text" name="phone" class="form-control" id="phone"required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Lokalizacja:</label>
+      <input type="text" name="location" class="form-control" id="location"required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Cena:</label>
+      <input type="text" name="price" class="form-control" id="price" required>
+    </div>
+
+    <div class="mb-3">
+    <label for="category"  class="form-label">Wybierz kategorię:</label>
+  <select id="category" name="category"class="form-select"  required>
+    <option value="car">Motoryzacja</option>
+    <option value="house">Nieruchomości</option>
+    <option value="work">Praca</option>
+    <option value="furniture">Dom i ogród</option>
+    <option value="gaming">Elektronika</option>
+    <option value="clothes">Moda</option>
+    <option value="baby">Dla dzieci</option>
+    <option value="sport">Sport</option>
+    <option value="music">Muzyka</option>
+    <option value="repair">Usługi</option>
+    <option value="hotel">Noclegi</option>
+    <option value="free">Za darmo</option>
+  </select>
+</div>
+
+<div class="mb-3">
+  <label for="image"  class="form-label">Dodaj zdjęcie (Tylko 1!):</label>
+  <input class="form-control" type="file" id="image" 
+                       name="image" value="" required>
+</div>
             </div>
-            </header>
-        </section>
-    <form>
-        <div class="mb-3">
-          <label for="validationTextarea" class="form-label">Opis</label>
-          <textarea class="form-control" id="validationTextarea" placeholder="Opis przedmiotu" required></textarea>
-        
-        </div>
-      
-        <div class="form-check mb-3">
-          <input type="checkbox" class="form-check-input" id="validationFormCheck1" required>
-          <label class="form-check-label" for="validationFormCheck1">Nieużywany</label>
-          <div class="invalid-feedback">Example invalid feedback text</div>
-        </div>     
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="validationFormCheck2" name="radio-stacked" required>
-          <label class="form-check-label" for="validationFormCheck2">Używany</label>
-        </div>
-        <div class="mb-3">
-          <select class="form-select" required aria-label="select example">
-            <option value="">Kategoria przedmiotu</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-          <div class="invalid-feedback">Example invalid select feedback</div>
-        </div>
-      
-        <div class="mb-3">
-          <input type="file" class="form-control" aria-label="file example" required>
-          <div class="invalid-feedback">Example invalid form file feedback</div>
-        </div>
-      
-        <div class="mb-3">
-          <button class="btn btn-primary" type="submit" disabled>Wystaw ogłoszenie</button>
-        </div>
-      </form>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
+    <button type="submit" class="btn btn-primary">Wyślij</button>
+
+  </form>
+  <div class=" ms-5 mt-2 text-danger">
+    <%- include ('./partials/messages') %>
+</div>
+</section>
+<section>
+
+  <%- include('./partials/footer'); %>
+
+</section>
 </body>
 </html>
