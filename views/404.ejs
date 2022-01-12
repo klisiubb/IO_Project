@@ -6,21 +6,25 @@
 </head>
 
 <body>
-   
-    <div class="text-center text-white pt-5 pb-5 bg-warning"> <!--height: 800 px     tak bylo oryginalnie i tak masz to ustawic :D-->
+      <div class=" text-center text-white pt-5 pb-5 bg-warning" style = "position: relative">
 
-    <!--    
-      <div style = "font-size: 300px;">404</div>
-        <h3> Nie martw się! Pracujemy nad tym.</h3>
-    -->
-        <img src="/inspector.png" class="img-fluid pt-5 pb-5" alt="404">
-        <h3> Nie martw się! Pracujemy nad tym.</h3>
+        <img src="/public/inspector.png" alt="404" class="img-fluid">
 
-        <a href="/" class="btn btn-outline-dark btn-lg" role="button">Strona główna</a>
-        <button type="button" class="btn btn-outline-light btn-lg">Kontakt z supportem</button>
+        <div style=" position: absolute;
+                    top: 60%;
+                    left: 10%;
+                    width: 100%;">
+
+            <h3> Nie martw się! Pracujemy nad tym.</h3>
+
+             <a href="/" class="btn btn-outline-dark btn-lg" role="button">Strona główna</a>
+             
+             <a href="/support" class="btn btn-outline-light btn-lg" role="button">Kontakt z supportem</a>
     
+        </div>
+
     </div>
-    
+
     <section>
 
         <%- include('./partials/footer'); %>
