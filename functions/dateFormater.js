@@ -1,4 +1,5 @@
 function formatDate(date){
+
     month = date.getMonth()+1;
     monthString = "";
      if(month == 1) { monthString = "Stycznia";}

@@ -15,10 +15,10 @@ app.use('/uploads', express.static('uploads'));
 const {ensureAuthenticated} = require('./config/auth') 
 require('./config/passport')(passport)
 //mongoose
-mongoose.connect('mongodb://localhost/test',{useNewUrlParser: true, useUnifiedTopology : true})
-.then(() => console.log('connected to DB'))
-.catch((err)=> console.log(err));
-
+//mongoose.connect('mongodb://localhost/test',{useNewUrlParser: true, useUnifiedTopology : true})
+//then(() => console.log('connected to DB'))
+//.catch((err)=> console.log(err));
+mongoose.connect('mongodb://127.0.0.1:27017/test');
 //EJS
 app.set('view engine','ejs');
 //BodyParser
