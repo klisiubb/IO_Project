@@ -2,7 +2,7 @@
 
 ## PLX - Portal z ogłoszeniami lokalnymi
 
-**Wersja:** *0.1.0*\
+**Wersja:** *0.2.0*\
 **Autorzy:**\
 *Mateusz Kliś* [Github](https://github.com/klisiubb)\
 *Bartosz Dobija* [Github](https://github.com/BartShoot)\
@@ -15,6 +15,7 @@
 | ------------- |:-------------:|
 | 0.0.1         | Wersja początkowa | 
 | 0.1.0         | Wersja grupowa |
+| 0.2.0         | Wersja końcowa backend|
 
 
 # Spis treści:
@@ -43,60 +44,60 @@ Celem powstania portalu **PLX** jest umożliwienie sprzedaży i kupna różnych 
 
 ### Wobec użytkownika:
 
-* Rejestracja użytkownika
-* Weryfikacja użytkownika przy pomocy poczty elektronicznej
-* Logowanie użytkownika
-* Edycja profilu
-* Kontakt z administratorem
-* Kontakt ze sprzedającym/kupującym
-* Wystawianie opinii innym sprzedającym/kupującym
-* Dostęp do najczęsciej zadawanych pytań
-* Wybór sposobu dostawy
-* Dodawanie ogłoszeń
-* Edytowanie ogloszeń
-* Usuwanie ogłoszeń
-* Przeglądanie ogłoszeń
-* Sortowanie ogłoszeń według wybranych kryteriów np ceny
-* Zgłaszanie podejrzanych ogłoszeń
+* Rejestracja użytkownika (Mateusz Kliś i Bartosz Dobija)
+* Weryfikacja użytkownika przy pomocy poczty elektronicznej (Mateusz Kliś i Bartosz Dobija)
+* Logowanie użytkownika (Mateusz Kliś i Bartosz Dobija)
+* Edycja profilu (Mateusz Kliś i Bartosz Dobija)
+* Kontakt z supportem (Mateusz Kliś i Bartosz Dobija) 
+* Kontakt ze sprzedającym/kupującym (Mateusz Kliś)
+* Wystawianie opinii innym sprzedającym/kupującym - niezrealizowane
+* Dostęp do najczęsciej zadawanych pytań (Bartosz Dobija)
+* Wybór sposobu dostawy - niezrealizowane
+* Dodawanie ogłoszeń (Mateusz Kliś i Bartosz Dobija)
+* Edytowanie ogloszeń (Mateusz Kliś i Bartosz Dobija)
+* Usuwanie ogłoszeń (Mateusz Kliś i Bartosz Dobija)
+* Przeglądanie ogłoszeń (Mateusz Kliś i Bartosz Dobija)
+* Sortowanie ogłoszeń według wybranych kryteriów np ceny - niezrealizowane
+* Zgłaszanie podejrzanych ogłoszeń (Mateusz Kliś i Bartosz Dobija)
   
 ### Wobec administratora
 
-* Moderacja ogłoszeń
-* Moderacja profili
-* Usuwanie ogłoszeń
-* Odpowiadanie użytkownikom na ich zapytania
-* Wysyłanie newslettera
-* Manualne akceptowanie ogłoszeń z oznaczeniem 18+
+* Moderacja ogłoszeń (Mateusz Kliś i Bartosz Dobija)
+* Moderacja profili (Mateusz Kliś i Bartosz Dobija)
+* Usuwanie ogłoszeń (Mateusz Kliś i Bartosz Dobija)
+* Odpowiadanie użytkownikom na ich zapytania - niezrealizowane 
+* Wysyłanie newslettera (Mateusz Kliś i Bartosz Dobija)
+* Manualne akceptowanie ogłoszeń z oznaczeniem 18+ - niezrealizowane 
   
 ## Wymagania niefunkcjonalne
 
-* Filtrowanie treści wprowadzanych wobec listy słów zakazanych
-* Kompresja zdjęć
-* Wysyłanie powiadomień o nowej wiadomości od kupującego/sprzedającego
-* Wysyłanie powiadomień o odpowiedzi administratora
-* Ukrywanie ogłoszeń starszych niż 90 dni
-* Zapisywanie, edytowanie, usuwanie i wyświetlanie ogłoszeń z baz danych
-* Przechowywanie wiadomości między użytkownikami lokalnie
-* Zgodność z przepisami prawa polskiego i unijnego
+* Filtrowanie treści wprowadzanych wobec listy słów zakazanych - niezrealizowane 
+* Kompresja zdjęć (Mateusz Kliś i Bartosz Dobija)
+* Wysyłanie powiadomień o nowej wiadomości od kupującego/sprzedającego (Mateusz Kliś i Bartosz Dobija)
+* Wysyłanie powiadomień o odpowiedzi administratora (Mateusz Kliś i Bartosz Dobija)
+* Ukrywanie ogłoszeń starszych niż 90 dni - niezrealizowane 
+* Zapisywanie, edytowanie, usuwanie i wyświetlanie ogłoszeń z baz danych (Mateusz Kliś i Bartosz Dobija)
+* Przechowywanie wiadomości między użytkownikami lokalnie - niezrealizowane 
+* Zgodność z przepisami prawa polskiego i unijnego - niezrealizowane
 * Mobile-first
 
 ## Możliwości rozwoju
 
-* Obsługa płatności między sprzedawcą i kupującym
-* Implementacja usługi kurierskiej dla sprzedającego
-* Promowanie ogłoszeń
-* Dodawanie ogłoszeń do ulubionych
-* Eksport ogłoszeń na inne platformy
-* Stworzenie systemu lojalnościowego dla kupujących i sprzedających
+* Obsługa płatności między sprzedawcą i kupującym - niezrealizowane
+* Implementacja usługi kurierskiej dla sprzedającego - niezrealizowane
+* Promowanie ogłoszeń (Mateusz Kliś i Bartosz Dobija)
+* Dodawanie ogłoszeń do ulubionych (Mateusz Kliś i Bartosz Dobija)
+* Eksport ogłoszeń na inne platformy - niezrealizowane
+* Stworzenie systemu lojalnościowego dla kupujących i sprzedających - niezrealizowane
 
 
 # Opis architektury i technologii
 Strona internetowa zaprojektowana z podejściem mobile first będzie oparta klasycznie o [HTML5](https://developer.mozilla.org/en-US/docs/Web/HTML) i [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS). Naszym głównym frameworkiem będzie [NodeJS](https://nodejs.org/en/docs/) ze wsparciem frameworka [Express](https://expressjs.com/), a za interaktywne UI będzie odpowiadał [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) i [Bootstrap5](https://getbootstrap.com/docs/5.0/getting-started/introduction/).
 
 Do zrealizowania naszego projektu będziemy korzystać z następujących wzorców projektowych:
-- [Obserwator](https://refactoring.guru/design-patterns/observer) do opracowania systemu obserwowania i powiadomień
-- [Prototyp](https://refactoring.guru/design-patterns/prototype) do tworzenia ofert
-- [Pamiątka](https://refactoring.guru/design-patterns/memento) do proponowania ofert na podstawie poprzednich wyświetleń ofert
+- [Obserwator](https://refactoring.guru/design-patterns/observer) do opracowania systemu obserwowania i powiadomień - niezrealizowane
+- [Prototyp](https://refactoring.guru/design-patterns/prototype) do tworzenia ofert - niezrealizowane
+- [Pamiątka](https://refactoring.guru/design-patterns/memento) do proponowania ofert na podstawie poprzednich wyświetleń ofert - niezrealizowane
 
 # Lista przypadków użycia
 ### Sprzedawca wystawia ofertę sprzedaży
