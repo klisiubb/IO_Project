@@ -2,7 +2,7 @@
 
 ## PLX - Portal z ogłoszeniami lokalnymi
 
-**Wersja:** *0.2.0*\
+**Wersja:** *0.3.0*\
 **Autorzy:**\
 *Mateusz Kliś* [Github](https://github.com/klisiubb)\
 *Bartosz Dobija* [Github](https://github.com/BartShoot)\
@@ -16,6 +16,7 @@
 | 0.0.1         | Wersja początkowa | 
 | 0.1.0         | Wersja grupowa |
 | 0.2.0         | Wersja końcowa backend|
+| 0.3.0         | Wersja końcowa frontend|
 
 
 # Spis treści:
@@ -44,6 +45,14 @@ Celem powstania portalu **PLX** jest umożliwienie sprzedaży i kupna różnych 
 
 ### Wobec użytkownika:
 
+* Responsywne menu strony(Tomasz Korzeniowski)
+* Logowanie użytkownika "FRONTEND" (Tomasz Korzeniowski)
+* Ogłoszenia promowane (Tomasz Korzeniowski)
+* Dodawanie ogłoszeń "FRONTEND" (Tomasz Korzeniowski)
+* Profil użytkownika "FRONTEND" (Tomasz Korzeniowski)
+* Wyszukiwanie ogłoszeń (Tomasz Korzeniowski)
+* FAQ (Tomasz Korzeniowski)
+* Resetowanie hasła użytkownika (Tomasz Korzeniowski)
 * Rejestracja użytkownika (Mateusz Kliś i Bartosz Dobija)
 * Weryfikacja użytkownika przy pomocy poczty elektronicznej (Mateusz Kliś i Bartosz Dobija)
 * Logowanie użytkownika (Mateusz Kliś i Bartosz Dobija)
