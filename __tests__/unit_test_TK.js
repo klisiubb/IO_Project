@@ -15,7 +15,7 @@ describe('insert', () => {
 });
   it('Powinien być przynajmniej jeden przycisk na stronie',()=>{
    const buttons= fixture.debugElement
-   .queryAll(by.ejs('button'));
+   .queryAll(by.css('button'));
    expect(buttons.lenght >=1).toBeTruthy();
   });
   it('Powinien dodać użytkownika do bazy', async () => {
@@ -27,4 +27,10 @@ describe('insert', () => {
     const doduzytkownik = await uzytkownik.findOne({_id: '21312'});
     expect(doduzytkownik).toEqual(daneuzytkownika);
   });
+  it('Powinien być przycisk "logowanie" na stronie',()=>{
+    const logowanie= fixture.debugElement
+    .queryAll(by.css('button'));
+    const nativeButton=logowanie[0].nativeElement;
+    expect(nativeButton.textContent).toBe('Logowanie');
+   });
 });
